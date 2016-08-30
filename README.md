@@ -1,2 +1,2 @@
 # dotfiles
-My dot giles (minus my vim configs)
+My dot files (minus my vim configs)
