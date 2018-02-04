@@ -68,4 +68,7 @@ AP: ${wireless_essid wlan0}
 Down: ${downspeed wlan0} k/s ${alignr}Up: ${upspeed wlan0} k/s
 ${downspeedgraph wlan0 20,90} ${alignr}${upspeedgraph wlan0 20,90}
 Total: ${totaldown wlan0} ${alignr}Tota: ${totalup wlan0}
+${endif}
+
+${execi 180 ~/scripts/batteryNotify.sh}
 

@@ -190,5 +190,6 @@ esac
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+export NDK_ROOT=/usr/local/lib/android-ndk-r8d
 # added by Anaconda3 4.1.0 installer
 export PATH="~/anaconda3/bin:$PATH"
