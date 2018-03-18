@@ -1,0 +1,7 @@
+.fluxbox/*
+!.fluxbox/startup
+!.fluxbox/init
+!.fluxbox/menu
+!.fluxbox/keys
+!.fluxbox/styles/scott
+!.fluxbox/README.md

@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+nm-applet &
+gnome-sound-applet &
+#fbsetroot -solid "#FF7722" &
+
+
+#
+# Debian-local change:
+#   - fbautostart has been added with a quick hack to check to see if it
+#     exists. If it does, we'll start it up by default.
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+#fbsetroot -solid hotpink
+fbsetroot -solid black
+xcompmgr -cC -l 0 -t 0 -r 5 -o .4 &
+# Change your keymap:
+exec fluxbox
+# or if you want to keep a log:
+# exec fluxbox -log "/home/user/.fluxbox/log"
+xmodmap "~/.Xmodmap" &&
+conky &
