@@ -138,7 +138,7 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 
-export PS1="[$HC$FBLE\w/$FGRN\$(__git_ps1 '(%s)')$RS]: "
+export PS1="[$HC$FBLE\w/$FGRN\$()$RS]: "
 
 export PATH=$HOME/local/bin:$HOME/scripts:$PATH
 export CLICOLOR=1
@@ -187,9 +187,23 @@ esac
 }
 
 
-export NVM_DIR="~/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export NDK_ROOT=/usr/local/lib/android-ndk-r8d
 # added by Anaconda3 4.1.0 installer
-export PATH="~/anaconda3/bin:$PATH"
+#export PATH="~/anaconda3/bin:$PATH"
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# checkout prev (older) revision
+git_prev() {
+    git checkout HEAD~
+}
+
+# checkout next (newer) commit
+git_next() {
+    BRANCH=`git show-ref | grep $(git show-ref -s -- HEAD) | sed 's|.*/\(.*\)|\1|' | grep -v HEAD | sort | uniq`
+    HASH=`git rev-parse $BRANCH`
+    PREV=`git rev-list --topo-order HEAD..$HASH | tail -1`
+    git checkout $PREV
+}
