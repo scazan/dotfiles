@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -ahlF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -145,27 +145,6 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 
-# GO ENV VARIABLES #######################################################################
-#This line will tell the Go installer where to place the source code before compilation
-export GOROOT=$HOME/gosource
- 
-#With this line, you choose the architecture of your machine.  
-#Those with 64 bit CPUs should enter "amd64" here.  
-export GOARCH=386
- 
-#Your operating system
-export GOOS=linux
- 
-#And now the location where the installer will place the finished files
-#Don't forget to create this directory before installing
-export GOBIN=$HOME/gobin
- 
-#Include Go binaries in command path
-export PATH=$PATH:$GOBIN
-
-# OpenFrameworks
-export OF_ROOT=$HOME/dev/libs/of_v0.8.4_linux64_release
-
 function apt-history(){
 case "$1" in
 	install)
@@ -188,7 +167,8 @@ esac
 
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # added by Anaconda3 4.1.0 installer
 #export PATH="~/anaconda3/bin:$PATH"
