@@ -112,8 +112,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$HOME/local/bin:$HOME/scripts:$HOME/dev/android-studio/bin:$PATH
-# export JAVA_HOME=/usr/local/java/jdk1.8.0_92
+export PATH=$HOME/local/bin:$HOME/dev/scripts:$PATH
+export JAVA_HOME=/usr/local/java/jdk1.8.0_92
 
 # ANSI color codes
 RS="\[\033[0m\]" # reset
