@@ -13,6 +13,7 @@ alias open='xdg-open'
 alias x='exit'
 alias naut='nautilus --browser --no-desktop'
 #alias tmx='tmux attach -t'
-alias du='du -h'
+alias du='du -hd 1'
 alias df='df -h'
 alias spotify="spotify --force-device-scale-factor=1.5"
+alias screenshot='gnome-screenshot --interactive'

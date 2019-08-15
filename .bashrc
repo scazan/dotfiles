@@ -112,8 +112,8 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$HOME/local/bin:$HOME/dev/task-cli:$HOME/scripts:$HOME/dev/android-studio/bin:$PATH
-export JAVA_HOME=/usr/local/java/jdk1.8.0_92
+export PATH=$HOME/local/bin:$HOME/scripts:$HOME/dev/android-studio/bin:$PATH
+# export JAVA_HOME=/usr/local/java/jdk1.8.0_92
 
 # ANSI color codes
 RS="\[\033[0m\]" # reset
@@ -187,3 +187,40 @@ git_next() {
     PREV=`git rev-list --topo-order HEAD..$HASH | tail -1`
     git checkout $PREV
 }
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[ -f /home/scott/dev/sequencer/node_modules/tabtab/.completions/electron-forge.bash ] && . /home/scott/dev/sequencer/node_modules/tabtab/.completions/electron-forge.bash
+# added by Miniconda3 4.5.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+
+# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/scott/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+    # \eval "$__conda_setup"
+# else
+    # if [ -f "/home/scott/miniconda3/etc/profile.d/conda.sh" ]; then
+        # . "/home/scott/miniconda3/etc/profile.d/conda.sh"
+        # CONDA_CHANGEPS1=false conda activate base
+    # else
+        # \export PATH="/home/scott/miniconda3/bin:$PATH"
+    # fi
+# fi
+# unset __conda_setup
+# <<< conda init <<<
+# added by Miniconda3 4.5.12 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/scott/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/home/scott/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/scott/miniconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/home/scott/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
