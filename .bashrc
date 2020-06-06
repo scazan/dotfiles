@@ -224,3 +224,11 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
+
+
+# rbenv
+export PATH="/home/scott/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# rust
+source $HOME/.cargo/env
