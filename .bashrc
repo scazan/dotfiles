@@ -114,6 +114,7 @@ if ! shopt -oq posix; then
 fi
 export PATH=$HOME/local/bin:$HOME/dev/scripts:$PATH
 export JAVA_HOME=/usr/local/java/jdk1.8.0_92
+export TMPDIR="/tmp"
 
 # ANSI color codes
 RS="\[\033[0m\]" # reset
@@ -146,23 +147,23 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 
 function apt-history(){
-case "$1" in
-	install)
-		cat /var/log/dpkg.log | grep 'install '
-		;;
-	upgrade|remove)
-		cat /var/log/dpkg.log | grep $1
-		;;
-	rollback)
-		cat /var/log/dpkg.log | grep upgrade | \
-			grep "$2" -A10000000 | \
-			grep "$3" -B10000000 | \
-			awk '{print $4"="$5}'
-		;;
-	*)
-		cat /var/log/dpkg.log
-		;;
-esac
+    case "$1" in
+      install)
+        cat /var/log/dpkg.log | grep 'install '
+        ;;
+      upgrade|remove)
+        cat /var/log/dpkg.log | grep $1
+        ;;
+      rollback)
+        cat /var/log/dpkg.log | grep upgrade | \
+          grep "$2" -A10000000 | \
+          grep "$3" -B10000000 | \
+          awk '{print $4"="$5}'
+        ;;
+      *)
+        cat /var/log/dpkg.log
+        ;;
+    esac
 }
 
 
@@ -190,45 +191,27 @@ git_next() {
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[ -f /home/scott/dev/sequencer/node_modules/tabtab/.completions/electron-forge.bash ] && . /home/scott/dev/sequencer/node_modules/tabtab/.completions/electron-forge.bash
-# added by Miniconda3 4.5.12 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-
-# __conda_setup="$(CONDA_REPORT_ERRORS=false '/home/scott/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-    # \eval "$__conda_setup"
-# else
-    # if [ -f "/home/scott/miniconda3/etc/profile.d/conda.sh" ]; then
-        # . "/home/scott/miniconda3/etc/profile.d/conda.sh"
-        # CONDA_CHANGEPS1=false conda activate base
-    # else
-        # \export PATH="/home/scott/miniconda3/bin:$PATH"
-    # fi
-# fi
-# unset __conda_setup
-# <<< conda init <<<
-# added by Miniconda3 4.5.12 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/home/scott/miniconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/home/scott/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/scott/miniconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/home/scott/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
-
+[ -f $HOME/dev/sequencer/node_modules/tabtab/.completions/electron-forge.bash ] && . $HOME/dev/sequencer/node_modules/tabtab/.completions/electron-forge.bash
 
 # rbenv
-export PATH="/home/scott/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # rust
 source $HOME/.cargo/env
+. "$HOME/.cargo/env"
+
+# yarn bin
+export PATH="$(yarn global bin):$PATH"
+
+#OF
+OF_ROOT=$HOME/dev/openFrameworks
+
+export PATH="$PATH:$HOME/dev/plan8/chrome/depot_tools"
+# source ~/dev/bash-wakatime/bash-wakatime.sh
+
+# yabridge
+export PATH="$PATH:$HOME/.local/share/yabridgectl"
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin
