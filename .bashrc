@@ -139,7 +139,7 @@ BCYN="\[\033[46m\]" # background cyan
 BWHT="\[\033[47m\]" # background white
 
 
-export PS1="[$HC$FBLE\w/$FGRN\$()$RS]: "
+export PS1="[$HC$FBLE\h|\w/$FGRN\$()$RS]: "
 
 export PATH=$HOME/local/bin:$HOME/scripts:$PATH
 export CLICOLOR=1
