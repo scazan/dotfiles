@@ -215,3 +215,5 @@ export PATH="$PATH:$HOME/.local/share/yabridgectl"
 
 # add Pulumi to the PATH
 export PATH=$PATH:$HOME/.pulumi/bin
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
